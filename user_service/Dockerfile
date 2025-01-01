@@ -26,5 +26,5 @@ ENV FLASK_APP=run.py
 # Exposer le port 5000 pour accéder à l'application
 EXPOSE 5000
 
-# Commande pour démarrer l'application
-CMD ["./venv/bin/python", "user_service/run.py"]  # Assurez-vous que c'est le bon point d'entrée
+# Commande pour démarrer l'application avec Gunicorn
+CMD ["./venv/bin/gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "user_service.run:app"]
