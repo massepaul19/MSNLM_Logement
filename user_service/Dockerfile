@@ -5,7 +5,7 @@ FROM python:3.12-slim
 WORKDIR /app
 
 # Copier les fichiers nécessaires pour installer les dépendances
-COPY requirements.txt /app/
+COPY /user_service/requirements.txt /app/
 
 # Installer les dépendances Python
 RUN pip install --no-cache-dir -r requirements.txt
