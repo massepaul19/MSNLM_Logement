@@ -8,7 +8,7 @@ WORKDIR /app
 COPY /user_service/requirements.txt /app/
 
 # Installer les dépendances Python
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel
 
 # Copier tout le code dans le conteneur
 COPY . /app/
