@@ -4,11 +4,18 @@ FROM python:3.12-slim
 # Définir le répertoire de travail
 WORKDIR /app
 
-# Copier les fichiers nécessaires pour installer les dépendances
+# Copier le fichier requirements.txt dans le conteneur
 COPY /user_service/requirements.txt /app/
 
-# Installer les dépendances Python
-RUN pip install --no-cache-dir --upgrade pip setuptools wheel
+# Installer venv pour créer un environnement virtuel
+RUN apt-get update && apt-get install -y python3-venv && apt-get clean
+
+# Créer un environnement virtuel
+RUN python -m venv venv
+
+# Installer les dépendances dans l'environnement virtuel
+RUN ./venv/bin/pip install --no-cache-dir --upgrade pip setuptools wheel
+RUN ./venv/bin/pip install --no-cache-dir -r requirements.txt
 
 # Copier tout le code dans le conteneur
 COPY . /app/
@@ -20,5 +27,4 @@ ENV FLASK_APP=run.py
 EXPOSE 5000
 
 # Commande pour démarrer l'application
-CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
-
+CMD ["./venv/bin/python", "run.py"]  # Assurez-vous que c'est le bon point d'entrée
