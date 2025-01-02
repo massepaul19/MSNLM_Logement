@@ -23,8 +23,9 @@ COPY . /app/
 # Définir la variable d'environnement pour Flask
 ENV FLASK_APP=run.py
 
-# Exposer le port 5000 pour accéder à l'application
-EXPOSE 5000
+# Exposer le port 5001 pour accéder à l'application
+EXPOSE 5001
 
 # Commande pour démarrer l'application
-CMD ["./venv/bin/python", "user_service/run.py"] # Assurez-vous que c'est le bon point d'entrée
+CMD ["./venv/bin/python", "user_service/run.py"]
+
