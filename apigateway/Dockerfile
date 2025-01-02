@@ -23,6 +23,7 @@ COPY . /app/
 # Définir la variable d'environnement pour Flask
 ENV FLASK_APP=run.py
 
+EXPOSE 5000
 
 # Commande pour démarrer l'application
 CMD ["./venv/bin/python3", "apigateway/run.py"]
