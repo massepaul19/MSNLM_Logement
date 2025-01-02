@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      - room_service
+      - reservation_service
+      - user_service
+    networks:
+      - app_network
+
+  room_service:
+    build:
+      context: ./room_service
+      dockerfile: Dockerfile
+    ports:
+      - "5002:5002"
+    networks:
+      - app_network
+
+  reservation_service:
+    build:
+      context: ./reservation_service
+      dockerfile: Dockerfile
+    ports:
+      - "5003:5003"
+    networks:
+      - app_network
+
+  user_service:
+    build:
+      context: ./user_service
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5001"
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
