@@ -13,6 +13,10 @@ services:
       - user_service
     networks:
       - app_network
+    environment:
+      - ROOM_SERVICE_URL=http://room_service:5002
+      - RESERVATION_SERVICE_URL=http://reservation_service:5003
+      - USER_SERVICE_URL=http://user_service:5001
 
   room_service:
     build:
@@ -22,6 +26,8 @@ services:
       - "5002:5002"
     networks:
       - app_network
+    environment:
+      - ROOM_SERVICE_URL=http://room_service:5002
 
   reservation_service:
     build:
@@ -31,6 +37,8 @@ services:
       - "5003:5003"
     networks:
       - app_network
+    environment:
+      - RESERVATION_SERVICE_URL=http://reservation_service:5003
 
   user_service:
     build:
@@ -40,6 +48,8 @@ services:
       - "5001:5001"
     networks:
       - app_network
+    environment:
+      - USER_SERVICE_URL=http://user_service:5001
 
 networks:
   app_network:
