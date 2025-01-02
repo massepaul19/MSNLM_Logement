@@ -26,5 +26,6 @@ ENV FLASK_APP=run.py
 EXPOSE 5000
 
 # Commande pour démarrer l'application
-CMD ["./venv/bin/python3", "apigateway/run.py"]
+CMD ["./venv/bin/python3", "apigateway/run.py", "--host=0.0.0.0", "--port=5000"]
+
 
