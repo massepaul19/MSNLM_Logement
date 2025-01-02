@@ -27,5 +27,5 @@ ENV FLASK_APP=run.py
 EXPOSE 5001
 
 # Commande pour démarrer l'application
-CMD ["./venv/bin/python", "user_service/run.py"]
+CMD ["./venv/bin/python3", "user_service/run.py"]
 
